@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 export default function HomePage() {
 
     const [movies, setMovies] = useState([]);
-    const { idFilme } = useParams();
+    
 
     useEffect(() => {
 
@@ -17,7 +17,6 @@ export default function HomePage() {
         })
 	}, []);
 
-    console.log(movies)
 
     
     return (
@@ -28,8 +27,8 @@ export default function HomePage() {
 
                 {movies.map(movie =>
                 
-                <Link to={`/sessoes/${movie.id}`}>
-                    <MovieContainer>
+                <Link to={`/sessoes/${movie.id}`} key={movie.id}>
+                    <MovieContainer data-test="movie">
                         <img src={movie.posterURL} alt="poster"/>
                     </MovieContainer>
                 </Link>

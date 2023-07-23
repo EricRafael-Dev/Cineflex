@@ -1,31 +1,47 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components"
 
-export default function SuccessPage() {
+export default function SuccessPage(props) {
+    const { object, object2, object3, name, setName, cpf, setCPF, selectSeatNumber, setSelectSeatNumber, selectSeat, setSelectSeat} = props;
+
+    function clean(){
+        setName('')
+        setCPF('')
+        setSelectSeatNumber([])
+        setSelectSeat()
+    }
+    
+
+    const seats = selectSeatNumber.map(seat => 
+        <p key={seat}>Assento {seat}</p>
+    )
 
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
 
-            <TextContainer>
+            <TextContainer data-test="movie-info">
                 <strong><p>Filme e sessão</p></strong>
-                <p>Tudo em todo lugar ao mesmo tempo</p>
-                <p>03/03/2023 - 14:00</p>
+                <p>{object.title}</p>
+                <p>{object2.date} - {object3}</p>
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="seats-info">
                 <strong><p>Ingressos</p></strong>
-                <p>Assento 01</p>
-                <p>Assento 02</p>
-                <p>Assento 03</p>
+
+                {seats}
+                
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="client-info">
                 <strong><p>Comprador</p></strong>
-                <p>Nome: Letícia Chijo</p>
-                <p>CPF: 123.456.789-10</p>
+                <p>Nome: {name}</p>
+                <p>CPF: {cpf}</p>
             </TextContainer>
 
-            <button>Voltar para Home</button>
+            <Link to='/' data-test="go-home-btn">
+                <Button onClick={clean}>Voltar para Home</Button>
+            </Link>
         </PageContainer>
     )
 }
@@ -68,4 +84,18 @@ const TextContainer = styled.div`
         font-weight: bold;
         margin-bottom: 10px;
     }
+`
+const Button = styled.button`
+    height: 42px;
+    width: 225px;
+    border-radius: 3px;
+    background-color: #E8833A;
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    border: none;
 `
