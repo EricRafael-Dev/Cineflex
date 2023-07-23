@@ -19,12 +19,10 @@ export default function App() {
     return (
         <>
             
-                <NavContainer>CINEFLEX</NavContainer>
+            <NavContainer>CINEFLEX</NavContainer>
             
            <BrowserRouter>
-			{/* Tudo que tiver uma rota entre Routes */}
 			<Routes>
-				{/* Cada rota tem que estar em Route */}
 				<Route path="/" element={<HomePage />} />
                 <Route path="/sessoes/:idFilme" element={<SessionsPage />}/>
                 <Route path="/assentos/:idSessao" element={<SeatsPage object={object} setObject={setObject} object2={object2} setObject2={setObject2} object3={object3} setObject3={setObject3} name={name} setName={setName} cpf={cpf} setCPF={setCPF} selectSeatNumber={selectSeatNumber} setSelectSeatNumber={setSelectSeatNumber} selectSeat={selectSeat} setSelectSeat={setSelectSeat} />}></Route>
